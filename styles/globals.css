@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,16 @@
   --primary: #60e3fd;
   --secondary: #0e93f9;
 }
+
+@layer base {
+  body {
+    font-family: "Grape Nuts", cursive;
+  }
+}
+
+/* body {
+  font-family: "Grape Nuts", cursive;
+} */
 
 .four-dots:before {
   display: block;
