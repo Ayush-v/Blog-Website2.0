@@ -46,3 +46,9 @@
     transform: rotate(360deg);
   }
 }
+
+@layer components {
+  .input {
+    @apply rounded-full p-2 px-4 outline-none w-full focus:-translate-x-2 focus:-translate-y-2 border border-black transition duration-500 active:-translate-x-2  active:-translate-y-2 shadow-md ring-1 ring-black;
+  }
+}
