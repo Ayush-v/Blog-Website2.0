@@ -3,7 +3,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const Detail = () => {
+const Detail: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const [detailData, setDetailData] = useState<any>(null);

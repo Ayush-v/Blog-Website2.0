@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const NewBlog: NextPage = () => {
   const router = useRouter();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<any>({
     title: "",
     author: "",
     body: "",
