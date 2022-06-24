@@ -2,15 +2,15 @@ import { prisma } from "../db/client";
 
 // READ
 export const getAllBlogs = async () => {
-  const users = await prisma.blog.findMany({});
-  return users;
+  return await prisma.blog.findMany({});
+  // return users;
 };
 
 export const getBlog = async (id: any) => {
-  const user = await prisma.blog.findUnique({
+  return await prisma.blog.findUnique({
     where: { id },
   });
-  return user;
+  // return user;
 };
 
 // CREATE
@@ -19,19 +19,19 @@ export const createBlog = async (
   author: string,
   body: string
 ) => {
-  const blog = await prisma.blog.create({
+  return await prisma.blog.create({
     data: {
       title,
       author,
       body,
     },
   });
-  return blog;
+  // return blog;
 };
 
 // UPDATE
 export const updateBlog = async (id: any, updateData: any) => {
-  const user = await prisma.blog.update({
+  return await prisma.blog.update({
     where: {
       id,
     },
@@ -39,15 +39,15 @@ export const updateBlog = async (id: any, updateData: any) => {
       ...updateData,
     },
   });
-  return user;
+  // return user;
 };
 
 // DELETE
 export const deleteBlog = async (id: any) => {
-  const user = await prisma.blog.delete({
+  return await prisma.blog.delete({
     where: {
       id,
     },
   });
-  return user;
+  // return user;
 };

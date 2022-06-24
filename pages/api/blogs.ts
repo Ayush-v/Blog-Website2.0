@@ -14,13 +14,13 @@ export default async function handle(
   try {
     switch (req.method) {
       case "GET": {
-        console.log(req.query.id);
         if (req.query.id) {
           const user = await getBlog(req.query.id);
           return res.status(200).json(user);
+        } else {
+          const users = await getAllBlogs();
+          return res.json(users);
         }
-        const users = await getAllBlogs();
-        return res.json(users);
       }
       case "POST": {
         const { title, author, body } = req.body;
@@ -28,7 +28,6 @@ export default async function handle(
         return res.status(200).json({ status: "success" });
       }
       case "PUT": {
-        // Update an existing user
         const { id, ...updateData } = req.body;
         const user = await updateBlog(id, updateData);
         return res.json(user);

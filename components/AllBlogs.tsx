@@ -6,7 +6,7 @@ const AllBlogs = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/getallblogs")
+    fetch("/api/blogs")
       .then((res) => {
         return res.json();
       })

@@ -28,6 +28,9 @@ const Detail: NextPage = () => {
       const url = `/api/blogs`;
       await fetch(url, {
         method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ id: `${id}` }),
       });
       router.back();
