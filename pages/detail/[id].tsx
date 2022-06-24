@@ -3,10 +3,10 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const Detail: NextPage = () => {
+const Detail = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [detailData, setDetailData] = useState(null);
+  const [detailData, setDetailData] = useState<any>(null);
 
   useEffect(() => {
     async function detail() {
@@ -23,6 +23,19 @@ const Detail: NextPage = () => {
     detail();
   }, [id]);
 
+  async function deleteBlog() {
+    try {
+      const url = `/api/blogs`;
+      await fetch(url, {
+        method: "DELETE",
+        body: JSON.stringify({ id: `${id}` }),
+      });
+      router.back();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <>
       <Head>
@@ -36,6 +49,10 @@ const Detail: NextPage = () => {
         <h1 className="text-7xl px-8 my-3">{detailData && detailData.title}</h1>
         <p>{detailData && detailData.author}</p>
         <p>{detailData && detailData.body}</p>
+
+        <br />
+        <br />
+        <button onClick={deleteBlog}>Delete</button>
       </div>
     </>
   );
