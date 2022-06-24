@@ -1,12 +1,12 @@
 import { prisma } from "../db/client";
 
 // READ
-export const getAllUsers = async () => {
+export const getAllBlogs = async () => {
   const users = await prisma.blog.findMany({});
   return users;
 };
 
-export const getUser = async (id: any) => {
+export const getBlog = async (id: any) => {
   const user = await prisma.blog.findUnique({
     where: { id },
   });
@@ -14,36 +14,36 @@ export const getUser = async (id: any) => {
 };
 
 // CREATE
-export const createUser = async (
+export const createBlog = async (
   title: string,
   author: string,
   body: string
 ) => {
-  const user = await prisma.blog.create({
+  const blog = await prisma.blog.create({
     data: {
       title,
       author,
       body,
     },
   });
-  return user;
+  return blog;
 };
 
 // UPDATE
-// export const updateUser = async (id: any, updateData: any) => {
-//   const user = await prisma.blog.update({
-//     where: {
-//       id
-//     },
-//     data: {
-//       ...updateData
-//     }
-//   })
-//   return user
-// }
+export const updateBlog = async (id: any, updateData: any) => {
+  const user = await prisma.blog.update({
+    where: {
+      id,
+    },
+    data: {
+      ...updateData,
+    },
+  });
+  return user;
+};
 
 // DELETE
-export const deleteUser = async (id: any) => {
+export const deleteBlog = async (id: any) => {
   const user = await prisma.blog.delete({
     where: {
       id,

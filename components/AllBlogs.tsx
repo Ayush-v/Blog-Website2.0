@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const AllBlogs = () => {
@@ -26,6 +27,9 @@ const AllBlogs = () => {
           data.map((index) => (
             <div key={index.id}>
               <h1>{index.title}</h1>
+              <Link href={`/detail/${index.id}`}>
+                <span className="text-blue-400 cursor-pointer">detail</span>
+              </Link>
             </div>
           ))}
       </div>
